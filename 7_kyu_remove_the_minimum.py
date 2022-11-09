@@ -1,0 +1,44 @@
+"""
+The museum of incredible dull things
+The museum of incredible dull things wants to get rid of some exhibitions. Miriam, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and then removes the one with the lowest rating.
+
+However, just as she finished rating all exhibitions, she's off to an important fair, so she asks you to write a program that tells her the ratings of the items after one removed the lowest one. Fair enough.
+
+Task
+Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
+
+Don't change the order of the elements that are left.
+
+Examples
+* Input: [1,2,3,4,5], output= [2,3,4,5]
+* Input: [5,3,2,1,4], output = [5,3,2,4]
+* Input: [2,2,1,2,1], output = [2,2,2,1]
+"""
+
+def remove_smallest(numbers):
+    if numbers == []:
+        return []
+    result = []
+    bruh = numbers[0]
+    for num in numbers:
+        if num < bruh:
+            bruh = num
+        result.append(num)
+    else:
+        result.remove(bruh)
+    return result
+
+numbers = [1,2,3,4,5]
+
+print(remove_smallest(numbers))
+
+#refactored --------
+def remove_smallest2(numbers):
+    # used numbers[:] to slice the original array and make a clone called "a"
+    a = numbers[:]
+    if a:
+        # .remove(min(a)) is used to find and remove the minimum value of the list
+        a.remove(min(a))
+    return a
+
+print(remove_smallest2(numbers))
